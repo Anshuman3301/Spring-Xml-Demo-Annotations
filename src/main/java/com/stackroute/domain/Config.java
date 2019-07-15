@@ -1,5 +1,6 @@
 package com.stackroute.domain;
 
+import com.stackroute.demo.BeanLifecycleDemoBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,25 +13,33 @@ public class Config {
     @Bean
     public Actor actor()
     {
-        return new Actor("Robert","male",22);
+        return new Actor("Messi","male",22);
     }
 
     @Bean
     public Actor actor1()
     {
-        return new Actor("Brad","male",22);
+        return new Actor("Ronaldo","male",22);
     }
 
     @Bean
     public Actor actor2() {
-        return new Actor("Laka", "male", 22);
+        return new Actor("Kaka", "male", 22);
     }
 
-    @Bean({"movie1","movie2"})
-    @Scope("prototype")
-    public Movie makeMovieObject()
+    /* @Bean({"movie1","movie2"})
+     @Scope("prototype")
+     public Movie makeMovieObject()
+     {
+         Movie movie =new Movie();
+         return movie;
+     }*/
+    @Bean(initMethod = "customInit",destroyMethod = "customDestroy")
+    public BeanLifecycleDemoBean beanLifecycleDemoBean()
     {
-        Movie movie =new Movie(actor());
-        return movie;
+        BeanLifecycleDemoBean beanLifecycleDemoBean=new BeanLifecycleDemoBean();
+        return beanLifecycleDemoBean;
+
     }
+
 }
