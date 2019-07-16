@@ -1,4 +1,3 @@
-
 package com.stackroute.domain;
 
 import org.springframework.beans.BeansException;
