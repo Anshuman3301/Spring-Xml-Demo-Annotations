@@ -1,36 +1,28 @@
 package com.stackroute.domain;
 
+import com.stackroute.demo.BeanLifecycleDemoBean;
+import com.stackroute.demo.BeanPostProcessorDemoBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
-//@ComponentScan(basePackages = "com.stackroute")
+
 public class Config {
 
-    @Bean
-    public Actor actor()
+    @Bean(initMethod = "customInit",destroyMethod = "customDestroy")
+    public BeanLifecycleDemoBean beanLifecycleDemoBean()
     {
-        return new Actor("cr7","male",22);
+        BeanLifecycleDemoBean beanLifecycleDemoBean=new BeanLifecycleDemoBean();
+        return beanLifecycleDemoBean;
     }
 
     @Bean
-    public Actor actor1()
+    public BeanPostProcessorDemoBean beanPostProcessorDemoBean()
     {
-        return new Actor("leo10","male",22);
+        BeanPostProcessorDemoBean beanPostProcessorDemoBean=new BeanPostProcessorDemoBean();
+        return beanPostProcessorDemoBean;
     }
 
-    @Bean
-    public Actor actor2() {
-        return new Actor("ronaldinho10", "male", 22);
-    }
-
-   /* @Bean({"movie1","movie2"})
-    @Scope("prototype")
-    public Movie makeMovieObject()
-    {
-        Movie movie =new Movie();
-        return movie;
-    }*/
 }
