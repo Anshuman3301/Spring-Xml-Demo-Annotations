@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 //@ComponentScan(basePackages = "com.stackroute")
 public class Config {
+    
 
+    //creating an actor bean
     @Bean
     public Actor actor()
     {
@@ -17,6 +19,8 @@ public class Config {
         actor.setName("Agha");
         return actor;
     }
+    
+    //creating a movie bean
     @Bean("movie1")
     public Movie makeMovieObject()
     {
