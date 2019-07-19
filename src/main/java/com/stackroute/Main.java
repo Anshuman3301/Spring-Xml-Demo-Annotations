@@ -14,6 +14,7 @@ import org.springframework.core.io.ClassPathResource;
 public class Main {
     public static void main(String[] args) {
 
+        //bean cretion for movie from movie class.
         ApplicationContext context=new AnnotationConfigApplicationContext(Config.class);
         Movie mv=context.getBean("movie1", Movie.class);
         mv.printAboutMovieActor();
